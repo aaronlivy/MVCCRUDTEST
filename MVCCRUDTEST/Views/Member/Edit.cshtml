@@ -1,0 +1,103 @@
+﻿@model MVCCRUDTEST.Models.MemberItemViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>會員管理</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(model => model.Id);
+
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Account)
+            </th>
+            <td>
+                @if (Model.Id == 0)
+                {
+                    @Html.EditorFor(model => model.Account)
+                    @Html.ValidationMessageFor(model => model.Account)
+                }
+                else
+                {
+                    @Html.DisplayFor(model => model.Account)
+                    @Html.HiddenFor(model => model.Account);
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <td>
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex)
+            </th>
+            <td>
+                @{
+                    List<SelectListItem> sexitems = new List<SelectListItem>()
+                            {
+                        new SelectListItem()
+                        {
+                            Text = "男",
+                            Value = "Male"
+                        },
+                        new SelectListItem()
+                        {
+                            Text = "女",
+                            Value = "Female"
+                        }
+                    };
+                }
+                @Html.DropDownListFor(model => model.Sex, sexitems)                
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <td>
+                @Html.EditorFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Phone)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <td>
+                @Html.EditorFor(model => model.Address)
+                @Html.ValidationMessageFor(model => model.Address)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <td>
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Birthdate)
+            </th>
+            <td>
+                <input type="date" id="Birthdate" name="Birthdate" value="@Html.Raw(Model.Birthdate)" />
+            </td>
+        </tr>
+    </table>
+    <div>
+        <button type="submit">送出</button><button type="reset">清除</button>
+    </div>
+}
+
