@@ -20,7 +20,7 @@ namespace MVCCRUDTEST.Models
 
         public override void Delete(Memeber entity)
         {
-            Delete(entity);
+            UnitOfWork.Context.Entry(entity).State = EntityState.Deleted;
             UnitOfWork.Commit();
         }
 
