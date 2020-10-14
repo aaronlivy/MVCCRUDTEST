@@ -42,5 +42,15 @@ namespace MVCCRUDTEST.Models
 			ObjectSet.Remove(entity);
 		}
 
+		public long Count(Expression<Func<T, bool>> expression)
+		{
+			return ObjectSet.Count(expression);
+		}
+
+		public long Count()
+        {
+			return ObjectSet.Count();
+        }
+
 	}
 }

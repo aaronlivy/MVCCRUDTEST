@@ -15,6 +15,9 @@ namespace MVCCRUDTEST.Models
 		IQueryable<T> Where(Expression<Func<T, bool>> expression);
 		void Add(T entity);
 		void Delete(T entity);
+
+		long Count(Expression<Func<T, bool>> whereCondition);
+		long Count();
 	}
 }
 
