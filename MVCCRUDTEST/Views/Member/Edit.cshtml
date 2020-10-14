@@ -8,7 +8,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken();
-    @Html.HiddenFor(model => model.Id);
+    @Html.HiddenFor(model => model.Id)
 
     <table>
         <tr>
@@ -24,7 +24,7 @@
                 else
                 {
                     @Html.DisplayFor(model => model.Account)
-                    @Html.HiddenFor(model => model.Account);
+                    @Html.HiddenFor(model => model.Account)
                 }
             </td>
         </tr>
@@ -44,7 +44,7 @@
             <td>
                 @{
                     List<SelectListItem> sexitems = new List<SelectListItem>()
-                            {
+                    {
                         new SelectListItem()
                         {
                             Text = "男",
